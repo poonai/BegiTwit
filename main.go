@@ -36,7 +36,7 @@ func main() {
   ticker := time.NewTicker(time.Minute * 30)
 
       for t := range ticker.C {
-          go Job()
+           Job()
       }
 }
 
