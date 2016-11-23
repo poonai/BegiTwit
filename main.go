@@ -8,7 +8,7 @@ import (
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"net/url"
-  "os"
+        "os"
 )
 
 type Issue struct {
@@ -36,7 +36,7 @@ func main() {
   ticker := time.NewTicker(time.Minute * 30)
 
       for t := range ticker.C {
-          go Job()
+           Job()
       }
 }
 
