@@ -52,15 +52,15 @@ func Job()  {
   var demo BeginnerResult
   json.Unmarshal(res.Bytes(), &demo)
   for _, item := range demo.Items {
-    exist, _ := c.Find(bson.M{"issueId": item.Id}).Count()
-
-    if exist == 0 {
-      c.Insert(&Issue{item.Id})
-      Tweet(item.Title, item.Html_url)
-    } else {
-      fmt.Print("already posted")
-    }
-
+		go func ()  {
+			exist, _ := c.Find(bson.M{"issueId": item.Id}).Count()
+			if exist == 0 {
+				c.Insert(&Issue{item.Id})
+				Tweet(item.Title, item.Html_url)
+			} else {
+				fmt.Print("already posted")
+			}
+		}()
   }
 }
 
